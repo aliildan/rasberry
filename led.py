@@ -1,3 +1,3 @@
 from gpiozero import LED
-beyazLed = LED(11)
+beyazLed = LED(17)
 beyazLed.on()
