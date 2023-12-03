@@ -1,7 +1,8 @@
 from gpiozero import LED
+from gpiozero import PWMLED
 from time import sleep
 
-led = LED(17)
+# led = LED(17)
 
 # for loop
 # for i in range(10):
@@ -14,5 +15,16 @@ led = LED(17)
 #     sleep(1)
 #     i = i + 1
 
-while True:
-    led.on()
+# forever loop
+# while True:
+#     led.on()
+
+led = PWMLED(17)
+
+for index in range(6):
+    print(index)
+    brightness = index * 0.2
+    print(f'aydinlik seviyesi:{brightness}')
+    led.value=brightness
+    index=index+1
+    sleep(2)
