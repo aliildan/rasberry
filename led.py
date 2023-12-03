@@ -21,9 +21,9 @@ from time import sleep
 
 led = PWMLED(17)
 
-for index in range(6):
+for index in range(11):
     print(index)
-    brightness = index * 0.2
+    brightness = index * 0.1
     print(f'aydinlik seviyesi:{brightness}')
     led.value=brightness
     index=index+1
