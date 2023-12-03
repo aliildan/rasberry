@@ -1,8 +1,5 @@
 from gpiozero import Button
-btn = Button(17)
-while True:
-    if btn.is_held:
-        print("button basili")
-    else:
-        print("button basili degil")
+btn = Button(2)
+btn.wait_for_press()
+print("buton a basildi")
 
