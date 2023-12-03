@@ -18,13 +18,16 @@ from time import sleep
 # forever loop
 # while True:
 #     led.on()
+#
 
-led = PWMLED(17)
+# brightness
+# led = PWMLED(17)
+#
+# for index in range(11):
+#     print(index)
+#     brightness = index * 0.1
+#     print(f'aydinlik seviyesi:{brightness}')
+#     led.value=brightness
+#     index=index+1
+#     sleep(2)
 
-for index in range(11):
-    print(index)
-    brightness = index * 0.1
-    print(f'aydinlik seviyesi:{brightness}')
-    led.value=brightness
-    index=index+1
-    sleep(2)
