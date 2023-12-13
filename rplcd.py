@@ -1,0 +1,5 @@
+from RPLCD.i2c import CharLCD
+
+LCD = CharLCD('PCF8574', 0x27)
+
+LCD.write_string('Hello World')
