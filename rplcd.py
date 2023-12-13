@@ -1,7 +1,7 @@
 from RPLCD.gpio import CharLCD
 from signal import pause
-LCD = CharLCD()
+lcd = CharLCD(numbering_mode=26)
 
-LCD.write_string('Hello World')
+lcd.write_string('Hello World')
 
 pause()
