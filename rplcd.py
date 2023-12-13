@@ -18,7 +18,10 @@ led_graph = LEDBarGraph(17,18,27,23, pwm=True)
 distance_sensor= DistanceSensor(24,25)
 while True:
     print('Distance to nearest object is', distance_sensor.distance, 'm')
-    lcd.write_string(f'Uzaklik: {distance_sensor.distance} metre')
+    if distance_sensor.distance == 1:
+        lcd.write_string(f'Uzaklik 1m veya daha fazla')
+    else:
+        lcd.write_string(f'Uzaklik: {distance_sensor.distance} m')
     led_graph.value = 1 - distance_sensor.distance
     sleep(1)
     lcd.clear()
