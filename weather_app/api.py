@@ -3,7 +3,7 @@ from typing import Type
 import requests
 import json
 
-from weather_app.weather import Weather
+from weather import Weather
 
 
 class API:

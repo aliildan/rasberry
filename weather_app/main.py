@@ -1,7 +1,7 @@
 from RPLCD.i2c import CharLCD
 from time import sleep
 from datetime import datetime
-from weather_app.api import API
+from api import API
 
 api = API()
 
