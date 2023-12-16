@@ -7,10 +7,16 @@ from api import API
 api = API()
 
 lcd = CharLCD('PCF8574', 0x27)
-yellow = 17
-blue = 27
-white = 23
-red = 18
+yellow_pin = 17
+blue_pin = 27
+white_pin = 23
+red_pin = 18
+
+yellow_led = LED(yellow_pin)
+blue_led = LED(blue_pin)
+white_led = LED(white_pin)
+red_led = LED(red_pin)
+
 while True:
     weather = api.get_weather()
     icon_binary = tuple(int(binary, 2) for binary in weather.get_icon())
@@ -29,17 +35,21 @@ while True:
     lcd.write_string(formatted_datetime)
 
     if weather.get_description() == weather.clear_sky:
-        led = LED(yellow)
+        yellow_led.on()
     elif weather.get_description() == weather.rainy:
-        led = LED(blue)
+        blue_led.on()
     elif weather.get_description() == weather.cloudy or weather.get_description() == weather.thunderstorm:
-        led = LED(white)
+        white_led.on()
     elif weather.get_description() == weather.snowy:
-        led = LED(red)
+        red_led.on()
     else:
-        led = LEDBoard(yellow, blue, white, red)
-    led.on()
+       print("Weather condition couldn't be find...")
+       yellow_led.on()
+       blue_led.on()
+       white_led.on()
+       red_led.on()
     sleep(60)
-    led.off()
-    sleep(1)
-
+    yellow_led.off()
+    blue_led.off()
+    white_led.off()
+    red_led.off()
