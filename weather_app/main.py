@@ -38,7 +38,8 @@ while True:
         led = LED(red)
     else:
         led = LEDBoard(yellow, blue, white, red)
-
     led.on()
     sleep(60)
     led.off()
+    sleep(1)
+
