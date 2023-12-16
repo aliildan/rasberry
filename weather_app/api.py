@@ -1,5 +1,3 @@
-from typing import Type
-
 import requests
 import json
 
@@ -19,16 +17,16 @@ class API:
             print(f'ERROR: statusCode: {response.status_code} -- {response.content}')
             return None
 
-        print(f'Response: {response.json()}')
+        print(f'Response: {response.content}')
 
-        data = json.loads(response.json())
+        data = response.json()
         wmo = json.loads(wmo_codes.read())
 
         weather = Weather()
         weather.set_weather_code(data['current']['weather_code'])
         weather.set_temperature(data['current']['temperature_2m'])
         weather.set_wind_speed(data['current']['wind_speed_10m'])
-        weather.set_wind_speed(data['current']['time'])
+        weather.set_time(data['current']['time'])
 
         for d in wmo:
             if weather.get_weather_code() in d["codes"]:
