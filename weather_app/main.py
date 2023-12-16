@@ -1,5 +1,5 @@
 from RPLCD.i2c import CharLCD
-from gpiozero import LED
+from gpiozero import LED, LEDBoard
 from time import sleep
 from datetime import datetime
 from api import API
@@ -7,10 +7,10 @@ from api import API
 api = API()
 
 lcd = CharLCD('PCF8574', 0x27)
-yellow = LED(17)
-blue = LED(27)
-white = LED(23)
-red = LED(27)
+yellow = 17
+blue = 27
+white = 23
+red = 18
 while True:
     weather = api.get_weather()
     icon_binary = tuple(int(binary, 2) for binary in weather.get_icon())
@@ -29,17 +29,16 @@ while True:
     lcd.write_string(formatted_datetime)
 
     if weather.get_description() == weather.clear_sky:
-        yellow.on()
+        led = LED(yellow)
     elif weather.get_description() == weather.rainy:
-        blue.on()
+        led = LED(blue)
     elif weather.get_description() == weather.cloudy or weather.get_description() == weather.thunderstorm:
-        white.on()
+        led = LED(white)
     elif weather.get_description() == weather.snowy:
-        red.on()
+        led = LED(red)
     else:
-        yellow.off()
-        blue.off()
-        white.off()
-        red.off()
+        led = LEDBoard(yellow, blue, white, red)
+
+    led.on()
 
     sleep(60)
