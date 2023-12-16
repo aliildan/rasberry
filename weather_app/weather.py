@@ -1,4 +1,9 @@
 class Weather:
+    clear_sky = "Clear sky"
+    cloudy = "Cloudy"
+    rainy = "Rainy"
+    thunderstorm = "Thunderstorm"
+    snowy = "Snowy"
 
     def __init__(self):
         self.temperature = None
